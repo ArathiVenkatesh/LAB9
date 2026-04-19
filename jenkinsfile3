@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                echo "Building the project..."
+                // Example build command
+                // sh 'javac HelloWorld.java'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                // Example test command
+                // sh 'java HelloWorld'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying the application..."
+                // Example deploy command
+                // sh 'echo Deployment successful'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully!"
+        }
+        failure {
+            echo "Pipeline failed!"
+        }
+    }
+}
