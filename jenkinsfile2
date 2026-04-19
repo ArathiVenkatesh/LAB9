@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/ArathiVenkatesh/LAB8.git'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                bat 'javac BankService.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                bat 'java BankService'
+            }
+        }
+
+    }
+}
