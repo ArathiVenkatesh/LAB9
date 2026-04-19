@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+                git branch: 'main', 
+                url: 'https://github.com/ArathiVenkatesh/LAB6.git'
+            }
+        }
+
+        stage('Build using Maven') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Run Program') {
+            steps {
+                bat 'java -cp target\\classes com.bnmit.BankService'
+            }
+        }
+
+    }
+}
